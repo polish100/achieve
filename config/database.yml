@@ -14,8 +14,4 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-#  database: d9fl1vf8lepik0
-#  username: cyuolegzqwrukm
-#  password: zvUfy0Xm8oFsA0LQeT8jz1TzCK
-#  hostname: ec2-54-235-170-124.compute-1.amazonaws.com:5432
 
