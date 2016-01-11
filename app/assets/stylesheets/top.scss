@@ -1,25 +1,24 @@
-body {
-  background-image: image-url("back.jpg");
-  //background-repeat: no-repeat;
-  -moz-background-size:cover;
-  background-size:cover;
-}
+//body {
+//  background-image: image-url("back.jpg");
+//  -moz-background-size:cover;
+//  background-size:cover;
+//}
 
-h1{
-  color: white;
-  margin: 250px auto auto auto;
-  text-align: center;
+.top h1{
+  //color: white;
+  //margin: 250px auto auto auto;
+  text-align: left;
   font-size: 40px;
 }
 
-p{
-  color: white;
+.top p{
+  //color: white;
   font-size: 40px;
-  text-align: center;
+  text-align: left;
 }
 
-.inquiry a{
-  color: white;
+.top {
+  //color: white;
   font-size: 20px;
-  text-align: center;
+  text-align: left;
 }
