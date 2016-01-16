@@ -1,25 +1,60 @@
 body {
-//  background-image: image-url("back.jpg");
-//  -moz-background-size:cover;
-//  background-size:cover;
-  background-color: pink;
-//}
-}
-.top h1{
-  //color: white;
-  //margin: 250px auto auto auto;
-  text-align: left;
-  font-size: 40px;
+  margin: 0;
+  font-family:"メイリオ",Meiryo,"ヒラギノ角ゴProW3","Hiragino Kaku Gothic Pro","MS Pゴシック",sand-serif;
 }
 
-.top p{
-  //color: white;
-  font-size: 40px;
-  text-align: left;
+.boxA:after {
+  content:"";
+  display:block;
+  clear:both
 }
 
-.top {
-  //color: white;
-  font-size: 20px;
-  text-align: left;
+.box1{
+  float: left;
+  width: auto;
 }
+
+.box2{
+  float: right;
+  width: auto;
+}
+
+.site h1 a {
+  color: #000000;
+  text-decoration: none
+}
+
+.site h1 {
+  margin: 0;
+  font-size:30px;
+}
+
+/*ナビゲーション*/
+.menu ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.menu li a{
+  display:block;
+  padding:10px 15px;
+  color: #000000;
+  font-size:14px;
+  text-decoration: none;
+}
+
+.menu li a:hover{
+  background-color: #eeeeee;
+}
+
+.menu ul:after{
+  content:"";
+  display:block;
+  clear:both;
+}
+.menu li{
+  float:left;
+  width:auto;
+}
+
