@@ -1,6 +1,5 @@
 class InquiriesController < ApplicationController
   def index
-    # 入力画面を表示
     @inquiry = Inquiry.new
     #render :action => 'index'
   end
@@ -23,6 +22,7 @@ class InquiriesController < ApplicationController
   def thanks
     Inquiry.create(inquiry_params)
   end
+
 
   private
 
