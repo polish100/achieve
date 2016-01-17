@@ -23,7 +23,8 @@ class InquiriesController < ApplicationController
   def thanks
     if params[:back]
       @inquiry = Inquiry.new(inquiry_params)
-      render :index
+      #render :index
+      redirect_to action: :index
     end
     Inquiry.create(inquiry_params)
   end
