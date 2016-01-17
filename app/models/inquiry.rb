@@ -7,7 +7,6 @@ class Inquiry < ActiveRecord::Base
 
   #Eメールの制限
   validates :email, :presence => {:message => 'メールアドレスを入力してください'}
-  validates :email, :uniqueness => {:message => 'このメールアドレスは既に登録済みです'}
   VALID_EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { :with => VALID_EMAIL_REGEX , message: '正しいメールアドレスを入力してください'}
 
