@@ -8,8 +8,8 @@
       <strong>入力内容にエラーがあります</strong>
 
       <ul>
-        <% @inquiry.errors.full_messages.each do |attr, msg| %>
-          <li><%= attr %><%= msg %></li>
+        <% @inquiry.errors.each do |attr, msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>

@@ -9,6 +9,7 @@ class InquiriesController < ApplicationController
     #attr = params.require(:inquiry).permit(:name, :email, :message)
     #@inquiry = Inquiry.new(attr)
     @inquiry = Inquiry.new(inquiry_params)
+    #createではなくnew！createだとDBに登録されてしまう。
 
     if @inquiry.valid?
       # OK。確認画面を表示
@@ -20,6 +21,10 @@ class InquiriesController < ApplicationController
   end
 
   def thanks
+    if params[:back]
+      @inquiry = Inquiry.new(inquiry_params)
+      render :index
+    end
     Inquiry.create(inquiry_params)
   end
 
