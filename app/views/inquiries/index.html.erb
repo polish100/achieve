@@ -1,10 +1,10 @@
-<%= form_for @inquiry, :url => inquiries_confirm_path do |f| %>
-  <div class="page-header">
+<%= form_for @inquiry, :url => inquiries_confirm_path do |f| # <= 変更 %>
+
     <h1>お問い合わせ</h1>
-  </div>
+
 
   <% if @inquiry.errors.any? %>
-    <div class="alert alert-danger" role="alert">
+
       <strong>入力内容にエラーがあります</strong>
 
       <ul>
@@ -12,24 +12,23 @@
           <li><%= attr %><%= msg %></li>
         <% end %>
       </ul>
-    </div>
+
   <% end %>
 
-  <table class="table">
-    <tr>
-      <th>名前<span class="text-danger">（必須）</span></th>
-      <td><%= f.text_field :name %></td>
-    </tr>
-    <tr>
-      <th>メールアドレス<span class="text-danger">（必須）</span></th>
-      <td><%= f.text_field :email %></td>
-    </tr>
-    <tr>
-      <th>お問い合わせ内容</th>
-      <td><%= f.text_area :message %></td>
-    </tr>
-  </table>
-  <%= f.submit '確認', class: 'btn btn-primary' %>
-<br><br>
-<%= link_to 'TOP', root_path %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_area :email %>
+  </div>
+  <div class="field">
+    <%= f.label :message %><br>
+    <%= f.text_area :message %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'next!' %>
+  </div>
+  <%= link_to 'TOP', root_path %>
 <% end %>
