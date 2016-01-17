@@ -12,7 +12,7 @@ class Inquiry < ActiveRecord::Base
   validates :email, format: { :with => VALID_EMAIL_REGEX , message: '正しいメールアドレスを入力してください'}
 
   #メッセージの制限
-  validates :message, :presence => {:message => '名前を入力してください'}
+  validates :message, :presence => {:message => 'メッセージを入力してください'}
 
 
 
