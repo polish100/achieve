@@ -27,6 +27,7 @@ ja:
       failure: "%{kind} から承認されませんでした。理由：%{reason}"
       success: "%{kind} から承認されました。"
     passwords:
+      reset_password_token: "あ"
       no_token: "パスワードリセットのメール以外からは、このページにアクセスする事ができません。もしパスワードリセットのメールから来ている場合は、正しいURLでアクセスしていることを確認して下さい。"
       send_instructions: "パスワードのリセット方法をメールでご連絡します。"
       send_paranoid_instructions: "メールアドレスが登録済みの場合、パスワード復旧用ページヘのリンクをメールでご連絡します。"
@@ -49,6 +50,7 @@ ja:
       unlocked: "アカウントのロックが解除されました。続けるにはログインして下さい。"
   errors:
     messages:
+      reset_password_token: "あ"
       already_confirmed: "は既に登録済みです。ログインしてください"
       confirmation_period_expired: "%{period}以内に確認する必要がありますので、新しくリクエストしてください。"
       expired: "有効期限切れです。新しくリクエストしてください。"

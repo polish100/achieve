@@ -1,8 +1,16 @@
 ---
 ja:
   activerecord:
+
+#      reset_password_token: "あ"
+#    user:
+#      email:　"メールアドレス"
+#      reset_password_token: "あ"
     errors:
       messages:
+        email: "メールアドレス"
+        password: "パスワード"
+        reset_password_token: "あ"
         record_invalid: "バリデーションに失敗しました: %{errors}"
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
@@ -200,9 +208,15 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
-  attributes:
-    user:
-      name: 名前
-      email: メールアドレス
-      message: メッセージ
+  activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        message: メッセージ
+        user: ユーザー
+        password: "パスワード"
+        reset_password_token: "リセットパスワードトークン"
 
