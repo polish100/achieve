@@ -3,6 +3,16 @@ body {
   font-family:"メイリオ",Meiryo,"ヒラギノ角ゴProW3","Hiragino Kaku Gothic Pro","MS Pゴシック",sand-serif;
 }
 
+.jumbotron{
+  background: #000 url("achieve.png") center center;
+  background-size: cover;
+  h1,p{
+    color:white;
+    text-align: center;
+    margin-top: 20px
+  }
+}
+
 .boxA:after {
   content:"";
   display:block;
