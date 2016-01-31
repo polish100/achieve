@@ -219,6 +219,7 @@ ja:
         user: ユーザー
         password: "パスワード"
         reset_password_token: "リセットパスワードトークン"
+        confirmation_token: "コンファメーショントークン"
         current_password: "現在のパスワード"
         password_confirmation: "パスワード確認"
 
