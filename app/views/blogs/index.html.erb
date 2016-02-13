@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></P>
-
-<%= link_to 'New Blog', new_blog_path %>
+<%= link_to 'ブログ作成', new_blog_path %>
 
 <% @blogs.each do |blog| %>
   <div class="panel panel-primary">
@@ -11,6 +9,13 @@
       <%= blog.content %><br/>
       <em><%= blog.created_at %></em>
       <p><em>投稿者:<%= blog.user.name %></em></p>
+      <p><em>user_id:<%= blog.user.id %></em></p>
+      <% if blog.user.id == current_user.id %>	
+      <tr>
+        <td><%= link_to '編集', edit_blog_path(blog) %></td>
+        <td><%= link_to '削除', blog, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+      </tr>
+      <% end %>
     </div>
 </div>
 <% end %>

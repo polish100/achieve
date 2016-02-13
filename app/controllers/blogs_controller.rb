@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user! 
+  before_action :authenticate_user!
 
   # GET /blogs
   # GET /blogs.json
@@ -11,11 +11,17 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @blog = Blog.find(params[:id])
   end
 
   # GET /blogs/new
   def new
     @blog = Blog.new
+    @user_id = current_user.id
+    @blog.user_id = @user_id
+    logger.debug"--------------------------------------------"
+    logger.debug(@blog.user_id)
+    logger.debug"--------------------------------------------"
   end
 
   # GET /blogs/1/edit
@@ -29,8 +35,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
-        #raise
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
+        format.html { redirect_to @blog, notice: 'ブログが正しく更新されました' }
         format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new }
@@ -45,7 +50,7 @@ class BlogsController < ApplicationController
     #raise
     respond_to do |format|
       if @blog.update(blog_params)
-        format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
+        format.html { redirect_to @blog, notice: 'ブログが正しく更新されました' }
         format.json { render :show, status: :ok, location: @blog }
       else
         format.html { render :edit }
@@ -60,7 +65,7 @@ class BlogsController < ApplicationController
     #raise
     @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+      format.html { redirect_to blogs_url, notice: 'ブログが正しく削除されました' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +78,6 @@ class BlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:title, :content)
+      params.require(:blog).permit(:title, :content, :user_id)
     end
 end

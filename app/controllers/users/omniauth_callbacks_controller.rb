@@ -4,6 +4,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     logger.debug"--------------------------------------------"
     logger.debug(@user.inspect)
     logger.debug"--------------------------------------------"
+    logger.debug(@user.id)
+    logger.debug"--------------------------------------------"
     if @user.persisted?
       set_flash_message(:notice, :success, kind: "Facebook") if is_navigational_format?
       sign_in_and_redirect @user, event: :authentication

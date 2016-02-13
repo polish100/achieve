@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
   #:recoverable, :rememberable, :trackable, :validatable, :omniauthable
-  has_many :blogs
+  has_many :blogs, dependent: :destroy
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
 
@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
       user = User.new(name:     auth.extra.raw_info.name,
                          provider: auth.provider,
                          uid:      auth.uid,
-                         email:    auth.info.email,
-                         #email:    User.create_unique_email,
+                         #email:    auth.info.email,
+                         email:    User.create_unique_email,
                          password: Devise.friendly_token[0,20]
                         )
       user.skip_confirmation!
