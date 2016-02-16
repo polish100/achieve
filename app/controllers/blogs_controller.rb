@@ -60,7 +60,7 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blogs/1.json
   def update
     logger.debug"--------------------------------------------"
-    logger.debug(@blog.user_id)
+    logger.debug(blog_params[:user_id])
     logger.debug(current_user.id)
     logger.debug"--------------------------------------------"
     unless blog_params[:user_id] == current_user.id
