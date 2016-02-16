@@ -26,6 +26,12 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1/edit
   def edit
+    unless @blog.user.id == current_user.id
+      respond_to do |format|
+        format.html { redirect_to blogs_path, notice: '不正な操作が実行されました' }
+        format.json { render :show, status: :created, location: @blog }
+      end
+    end
   end
 
   # POST /blogs
@@ -62,18 +68,31 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1
   # DELETE /blogs/1.json
   def destroy
-    #raise
-    @blog.destroy
-    respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'ブログが正しく削除されました' }
-      format.json { head :no_content }
+    unless @blog.user.id == current_user.id
+      respond_to do |format|
+        format.html { redirect_to blogs_path, notice: '不正な操作が実行されました' }
+        format.json { render :show, status: :created, location: @blog }
+      end
+    else
+      @blog.destroy
+      respond_to do |format|
+        format.html { redirect_to blogs_url, notice: 'ブログが正しく削除されました' }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
-      @blog = Blog.find(params[:id])
+      unless Blog.exists?(id: params[:id])
+        respond_to do |format|
+          format.html { redirect_to blogs_path, notice: '不正な操作が実行されました' }
+          format.json { render :show, status: :created, location: @blog }
+        end
+      else
+        @blog = Blog.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
