@@ -37,12 +37,12 @@ class BlogsController < ApplicationController
   # POST /blogs
   # POST /blogs.json
   def create
-    unless blog_params[:user_id] == current_user.id
-      respond_to do |format|
-        format.html { redirect_to blogs_path, notice: '不正な操作が実行されました' }
-        format.json { render :show, status: :created, location: @blog }
-      end
-    else
+#     unless blog_params[:user_id] == current_user.id
+#       respond_to do |format|
+#         format.html { redirect_to blogs_path, notice: '不正な操作が実行されました' }
+#         format.json { render :show, status: :created, location: @blog }
+#       end
+#     else
       @blog = Blog.new(blog_params)
       respond_to do |format|
         if @blog.save
@@ -53,22 +53,22 @@ class BlogsController < ApplicationController
           format.json { render json: @blog.errors, status: :unprocessable_entity }
         end
       end
-    end
+    #end
   end
 
   # PATCH/PUT /blogs/1
   # PATCH/PUT /blogs/1.json
   def update
-    logger.debug"--------------------------------------------"
-    logger.debug(blog_params[:user_id])
-    logger.debug(current_user.id)
-    logger.debug"--------------------------------------------"
-    unless blog_params[:user_id] == current_user.id
-      respond_to do |format|
-        format.html { redirect_to blogs_path, notice: '不正な操作が実行されました' }
-        format.json { render :show, status: :created, location: @blog }
-      end
-    else
+#     logger.debug"--------------------------------------------"
+#     logger.debug(blog_params[:user_id])
+#     logger.debug(current_user.id)
+#     logger.debug"--------------------------------------------"
+#     unless blog_params[:user_id] == current_user.id
+#       respond_to do |format|
+#         format.html { redirect_to blogs_path, notice: '不正な操作が実行されました' }
+#         format.json { render :show, status: :created, location: @blog }
+#       end
+#     else
       respond_to do |format|
         if @blog.update(blog_params)
           format.html { redirect_to @blog, notice: 'ブログが正しく更新されました' }
@@ -78,7 +78,7 @@ class BlogsController < ApplicationController
           format.json { render json: @blog.errors, status: :unprocessable_entity }
         end
       end
-    end
+    #end
   end
 
   # DELETE /blogs/1
