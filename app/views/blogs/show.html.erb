@@ -1,17 +1,20 @@
-<p>
-  <strong>タイトル:</strong>
-  <%= @blog.title %>
-</p>
 
-<p>
-  <strong>内容:</strong>
-  <%= @blog.content %>
-</p>
-
-<p>
-  <strong>投稿者:</strong>
-  <%= @blog.user.name %>
-</p>
-
-<%= link_to '編集', edit_blog_path(@blog) %> |
-<%= link_to 'ブログ一覧に戻る', blogs_path %>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><strong>タイトル:</strong><%=@blog.title %></h3>
+    </div>
+    <div class="panel-body">
+      <p>
+        <strong>内容:</strong>
+        <%= @blog.content %>
+      </p>
+      <p>
+        <strong>投稿者:</strong>
+        <%= @blog.user.name %>
+      </p>
+      <% if @blog.user.id == current_user.id %>
+      <%= link_to '編集', edit_blog_path(@blog) %>
+      <% end %>
+      <%= link_to 'ブログ一覧に戻る', blogs_path %>
+    </div>
+</div>

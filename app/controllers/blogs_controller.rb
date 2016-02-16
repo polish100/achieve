@@ -37,15 +37,21 @@ class BlogsController < ApplicationController
   # POST /blogs
   # POST /blogs.json
   def create
-    @blog = Blog.new(blog_params)
-
-    respond_to do |format|
-      if @blog.save
-        format.html { redirect_to @blog, notice: 'ブログが正しく更新されました' }
+    unless blog_params[:user_id] == current_user.id
+      respond_to do |format|
+        format.html { redirect_to blogs_path, notice: '不正な操作が実行されました' }
         format.json { render :show, status: :created, location: @blog }
-      else
-        format.html { render :new }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
+      end
+    else
+      @blog = Blog.new(blog_params)
+      respond_to do |format|
+        if @blog.save
+          format.html { redirect_to @blog, notice: 'ブログが正しく更新されました' }
+          format.json { render :show, status: :created, location: @blog }
+        else
+          format.html { render :new }
+          format.json { render json: @blog.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -53,14 +59,24 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blogs/1
   # PATCH/PUT /blogs/1.json
   def update
-    #raise
-    respond_to do |format|
-      if @blog.update(blog_params)
-        format.html { redirect_to @blog, notice: 'ブログが正しく更新されました' }
-        format.json { render :show, status: :ok, location: @blog }
-      else
-        format.html { render :edit }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
+    logger.debug"--------------------------------------------"
+    logger.debug(@blog.user_id)
+    logger.debug(current_user.id)
+    logger.debug"--------------------------------------------"
+    unless blog_params[:user_id] == current_user.id
+      respond_to do |format|
+        format.html { redirect_to blogs_path, notice: '不正な操作が実行されました' }
+        format.json { render :show, status: :created, location: @blog }
+      end
+    else
+      respond_to do |format|
+        if @blog.update(blog_params)
+          format.html { redirect_to @blog, notice: 'ブログが正しく更新されました' }
+          format.json { render :show, status: :ok, location: @blog }
+        else
+          format.html { render :edit }
+          format.json { render json: @blog.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

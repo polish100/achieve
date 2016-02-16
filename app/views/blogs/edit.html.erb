@@ -1,6 +1,10 @@
-<h1>Blog編集</h1>
-
-<%= render 'form' %>
-
-<!-- <%= link_to '見る', @blog %> |　-->
-<%= link_to 'ブログ一覧に戻る', blogs_path %>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h4>ブログの編集</h4>
+  </div>
+  <div class="panel-body">
+    <%= render 'form' %>
+    <br>
+    <%= link_to 'ブログ一覧に戻る', blogs_path %>
+  </div>
+</div>
