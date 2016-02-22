@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
+  mount_uploader :image, ImageUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
   #:recoverable, :rememberable, :trackable, :validatable, :omniauthable
   has_many :blogs, dependent: :destroy
+
+
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
 
@@ -16,8 +19,9 @@ class User < ActiveRecord::Base
                          uid:      auth.uid,
                          #email:    auth.info.email,
                          email:    User.create_unique_email,
-                         password: Devise.friendly_token[0,20]
+                         password: Devise.friendly_token[0,20],
                         )
+      user.img_path = "https://graph.facebook.com/#{user.uid}/picture?width=48&height=48"
       user.skip_confirmation!
       user.save
     end
@@ -34,8 +38,9 @@ end
                          provider: auth.provider,
                          uid:      auth.uid,
                          email:    User.create_unique_email,
-                         password: Devise.friendly_token[0,20]
+                         password: Devise.friendly_token[0,20],
                         )
+      user.img_path = "http://furyu.nazo.cc/twicon/#{user.name}"
       user.skip_confirmation!
       user.save
     end

@@ -1,5 +1,7 @@
 module ApplicationHelper
   def profile_img(user)
+    #if　user.image
+
     if user.provider == 'facebook'
       img_url = "https://graph.facebook.com/#{user.uid}/picture?width=48&height=48"
     elsif user.provider == 'twitter'

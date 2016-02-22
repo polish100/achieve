@@ -1,2 +1,9 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%=  @user.name =%> のアイコン</h1>
+
+
+　<% if @user.image? %>
+　　<%= image_tag(@user.image.url, :size => "50x50") %>
+
+　<% else %>
+　　<%= image_tag 'noimage.gif' %>
+　<% end %>

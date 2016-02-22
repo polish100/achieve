@@ -1,0 +1,13 @@
+<%= form_for(@user) do |f| %>
+
+    <h3>アイコンの変更</h3>
+    <%= @user.id %><br>
+    <p>現在のアイコン</p>
+    <%= image_tag(@user.img_path,:size => "48x48") %><br>
+    <br>
+    <%= f.label :画像 %>
+    <%= f.file_field :image %>
+    <%= f.submit "アップロード" %>
+    <%= link_to 'ユーザ一覧に戻る', users_path %>
+    <%= link_to '見る' , user_path %>
+<% end %>

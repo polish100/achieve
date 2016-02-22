@@ -56,3 +56,6 @@ end
   gem 'omniauth-twitter'
   gem 'omniauth-facebook'
   gem 'bootstrap-social-rails'
+  gem 'carrierwave'
+  gem 'rmagick'
+  gem 'fog'

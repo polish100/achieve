@@ -4,7 +4,7 @@
       <h3 class="panel-title"><%=@blog.title %></h3>
     </div>
     <div class="panel-body">
-      <%= profile_img(@blog.user) %><br>
+      <%= image_tag(@blog.user.img_path,:size => "48x48") %><br>
 
       <p>
         <strong>投稿者:</strong>
