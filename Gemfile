@@ -51,7 +51,6 @@ end
 
   gem 'therubyracer', platforms: :ruby
   gem 'bootstrap-sass', '~> 3.2.0'
-
   gem 'omniauth'
   gem 'omniauth-twitter'
   gem 'omniauth-facebook'
@@ -59,3 +58,4 @@ end
   gem 'carrierwave'
   gem 'rmagick'
   gem 'fog'
+  gem 'mini_magick'
