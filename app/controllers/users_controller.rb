@@ -15,6 +15,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+    unless @user.id == current_user.id
+      respond_to do |format|
+        format.html { redirect_to users_path, notice: '不正な操作が実行されました' }
+        format.json { render :show, status: :created, location: @user }
+      end
+    end
   end
 
   def update
@@ -39,7 +45,14 @@ end
 
  private
   def set_user
+    unless User.exists?(id: params[:id])
+      respond_to do |format|
+        format.html { redirect_to users_path, notice: '不正な操作が実行されました' }
+        format.json { render :show, status: :created, location: @user }
+      end
+    else
       @user = User.find(params[:id])
+    end
   end
 
   def user_params

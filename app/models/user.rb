@@ -17,10 +17,14 @@ class User < ActiveRecord::Base
       user = User.new(name:     auth.extra.raw_info.name,
                          provider: auth.provider,
                          uid:      auth.uid,
-                         #email:    auth.info.email,
-                         email:    User.create_unique_email,
+                         email:    auth.info.email,
+                         #email:    User.create_unique_email,
                          password: Devise.friendly_token[0,20],
                         )
+#       if auth.info.email.blank?
+#       return redirect_to :root
+#       end
+
       user.img_path = "https://graph.facebook.com/#{user.uid}/picture?width=48&height=48"
       user.skip_confirmation!
       user.save

@@ -1,6 +1,12 @@
-<h2>Dive into Code のブログ</h2>
-<p><%= link_to 'ブログ作成', new_blog_path %></p>
+<div class="row">
+  <div class="col-md-offset-4 col-md-4">
+    <h2>Dive into Code のブログ</h2>
+    <p><%= link_to 'ブログ作成', new_blog_path %></p>
+  </div>
+</div>
 <% @blogs.each do |blog| %>
+<div class="row">
+  <div class="col-md-offset-4 col-md-4">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title"><%= blog.id %>：<%=blog.title %></h3>
@@ -18,5 +24,7 @@
         <% end %>
       </tr>
     </div>
+    </div>
+  </div>
 </div>
 <% end %>
