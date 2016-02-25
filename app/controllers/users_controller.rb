@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       respond_to do |format|
         if @user.update(user_params)
            @user.update( img_path: @user.image )
-           format.html { redirect_to @user, notice: '画像がアップロードされました' }
+           format.html { redirect_to @user, notice: '画像が更新されました' }
            format.json { render :show, status: :ok, location: @user }
         else
            format.html { render :edit }
