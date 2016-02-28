@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227121956) do
+ActiveRecord::Schema.define(version: 20160228074229) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "title"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20160227121956) do
     t.string   "uid",                    default: "",                                                                null: false
     t.string   "provider",               default: "",                                                                null: false
     t.string   "image_url"
-    t.binary   "image"
+    t.string   "image"
     t.string   "img_path",               default: "https://s3-ap-northeast-1.amazonaws.com/dic-shibuya/default.png"
     t.string   "img_path_updated",       default: ""
   end
