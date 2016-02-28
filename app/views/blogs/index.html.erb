@@ -12,7 +12,11 @@
       <h3 class="panel-title"><%= blog.id %>：<%=blog.title %></h3>
     </div>
       <div class="panel-body">
-      <%= image_tag(blog.user.img_path,:size => "48x48") %><br>
+      <% if blog.user.img_path_updated.present? %>
+        <%= image_tag(blog.user.img_path_updated,:size => "48x48") %><br>
+      <% else %>
+        <%= image_tag(blog.user.img_path,:size => "48x48") %><br>
+      <% end %>
       <em>投稿者　:<%= blog.user.name %></em><br>
       <em>投稿日時:<%= blog.created_at %></em><br>
       <em>内容　　:<%= truncate(blog.content, :length => 5) %></em><br>

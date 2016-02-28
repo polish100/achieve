@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :image]
 
   def index
     @users = User.all
@@ -38,10 +38,18 @@ class UsersController < ApplicationController
         end
       end
   end
-#    def destroy
-#      @user.destroy
-#    end
+
+  def image
+    logger.debug"--------------------------------------------"
+    logger.debug(@user.image)
+    logger.debug(send_data(@user.image, disposition: :inline))
+    logger.debug"--------------------------------------------"
+    send_data(@user.image, disposition: :inline)
+
+  end
 end
+
+
 
  private
   def set_user

@@ -4,9 +4,14 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
-  #:recoverable, :rememberable, :trackable, :validatable, :omniauthable
+
   has_many :blogs, dependent: :destroy
 
+  def password_required?
+    if provider?
+      false
+    end
+  end
 
   def email_required?
     false
@@ -21,21 +26,22 @@ class User < ActiveRecord::Base
       user = User.new(name:     auth.extra.raw_info.name,
                          provider: auth.provider,
                          uid:      auth.uid,
-                         email:    auth.info.email,
-                         password: Devise.friendly_token[0,20],
+                         #email:    auth.info.email,
+                         email:    User.create_unique_email,
+                         #password: Devise.friendly_token[0,20],
                         )
       user.img_path = "https://graph.facebook.com/#{user.uid}/picture?width=48&height=48"
       user.skip_confirmation!
       user.save
-    elsif user.email != auth.info.email
+#     elsif user.email != auth.info.email
 
-    logger.debug"--------------------------------------------"
-    logger.debug(user.email)
-    logger.debug(auth.info.email)
-    logger.debug"--------------------------------------------"
-            user.email = auth.info.email
-            user.skip_confirmation!
-      user.save
+#     logger.debug"--------------------------------------------"
+#     logger.debug(user.email)
+#     logger.debug(auth.info.email)
+#     logger.debug"--------------------------------------------"
+#             user.email = auth.info.email
+#             user.skip_confirmation!
+#       user.save
     end
     user
 
@@ -49,9 +55,8 @@ end
       user = User.new(name:     auth.info.nickname,
                          provider: auth.provider,
                          uid:      auth.uid,
-                         #email:    User.create_unique_email,
-                         #email:    "",
-                         password: Devise.friendly_token[0,20],
+                         email:    User.create_unique_email,
+                         #password: Devise.friendly_token[0,20],
                         )
       user.img_path = "http://furyu.nazo.cc/twicon/#{user.name}"
       user.skip_confirmation!

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   #resources :users, only: [:index, :show]
-  resources :users
+  resources :users do
+        member { get :image }
+  end
   get 'inquiries' => 'inquiries#index'
   post 'inquiries' => 'inquiries#index'
 #  post 'inquiries/create' => 'inquiries#create'
