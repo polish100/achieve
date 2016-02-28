@@ -39,7 +39,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
          (user_params[:password].to_s != user_params[:password_confirmation].to_s) then
         return redirect_to edit_user_registration_url, notice: '変更後のパスワードを正しく入力してください。'
       end
-      if (user_params[:password].to_s.length > 1 && user_params[:password].to_s.length < 8)
+      if (user_params[:password].to_s.length >= 1 && user_params[:password].to_s.length < 8)
         return redirect_to edit_user_registration_url, notice: 'パスワードは8文字以上で入力してください。'
       end
     end
