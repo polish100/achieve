@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160227121956) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "blogs", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(version: 20160227121956) do
     t.string   "img_path_updated",       default: ""
   end
 
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
 
 end
