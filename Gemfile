@@ -66,3 +66,5 @@ end
   gem 'rmagick'
   gem 'fog'
   gem 'mini_magick'
+  gem 'rspec-rails'
+  gem 'capybara'

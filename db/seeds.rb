@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+#User.create(:email => 'k_ikeda@gameon.co.jp', :name => 'test', :profile => 'test')
+#User.create(email: 'k_ikeda@gameon.co.jp',name: 'test',profile: 'test')
+# coding: utf-8
+1000.times do |i|
+
+user = User.new(name: "ユーザ#{i}", email: "#{i}@dicachieve.co.jp", password: "password#{i}", uid: "#{i}")
+user.skip_confirmation!
+user.save!
+Blog.create(title: "title#{i}",content: "content#{i}",user_id: user.id)
+
+end
