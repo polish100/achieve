@@ -52,6 +52,18 @@ group :development, :test do
   gem 'pry-doc'    # methodを表示
   gem 'pry-byebug' # デバッグを実施(Ruby 2.0以降で動作する)
   gem 'pry-stack_explorer' # スタックをたどれる
+  gem 'awesome_print'
+  gem 'better_errors' 
+  gem 'binding_of_caller' 
+  gem 'database_rewinder'
+  gem 'factory_girl_rails'
+  gem 'hirb-unicode'
+  gem 'hirb'
+  gem 'quiet_assets'
+  gem 'tapp'
+  gem 'timecop' 
+  gem "spring-commands-rspec" 
+  gem "xray-rails" 
 end
 
   gem 'devise'
@@ -68,3 +80,4 @@ end
   gem 'mini_magick'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'rambulance'
