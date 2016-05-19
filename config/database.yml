@@ -2,6 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   template: template0
+  host: localhost
   pool: 5
 
 development:
@@ -15,4 +16,3 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-

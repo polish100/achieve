@@ -4,8 +4,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', groups: %w(test development), require: false
-gem 'pg', groups: %w(production), require: false
+#gem 'sqlite3', groups: %w(test development), require: false
+#gem 'pg', groups: %w(production), require: false
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -26,12 +27,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+#
 # Use Unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'libv8', '3.16.14.13'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -53,22 +56,24 @@ group :development, :test do
   gem 'pry-byebug' # デバッグを実施(Ruby 2.0以降で動作する)
   gem 'pry-stack_explorer' # スタックをたどれる
   gem 'awesome_print'
-  gem 'better_errors' 
-  gem 'binding_of_caller' 
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'database_rewinder'
   gem 'factory_girl_rails'
   gem 'hirb-unicode'
   gem 'hirb'
   gem 'quiet_assets'
   gem 'tapp'
-  gem 'timecop' 
-  gem "spring-commands-rspec" 
-  gem "xray-rails" 
+  gem 'timecop'
+  gem "spring-commands-rspec"
+  gem "xray-rails"
 end
 
   gem 'devise'
 
-  gem 'therubyracer', platforms: :ruby
+  #gem 'therubyracer', platforms: :ruby
+  gem 'therubyracer', '0.12.2'
+  #gem 'therubyracer', '~>0.12.2'
   gem 'bootstrap-sass', '~> 3.2.0'
   gem 'omniauth'
   gem 'omniauth-twitter'
