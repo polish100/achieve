@@ -3,10 +3,12 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!
 
 
+
   # GET /blogs
   # GET /blogs.json
   def index
     @blogs = Blog.all
+    binding.pry
   end
 
   # GET /blogs/1
