@@ -52,9 +52,13 @@
 <!-- This file lives in app/views/errors/internal_server_error.html.erb -->
 <div class="dialog">
   <div>
-    <h1>サーバ側の問題で画面が表示できません。</h1>
-    <p>サーバ管理者に連絡してください。</p>
-    <p>メールアドレス：ikebright@gmail.com</p>
+    <h1>お探しのページが表示できません。</h1>
+    <p>Achiveをご利用頂きありがとうございます。</p>
+    <p>あなたがアクセスしようとしたページが表示できません。サーバに問題が発生している可能性がございますので、大変お手数ですが、下記お問合わせフォームかメールにてご連絡頂ければ幸いです。</p>
+    <p><%= link_to "お問い合せフォーム", inquiries_path %></p>
+
+    <p><a href="mailto:ikebright&#64;gmail.com">メールはこちら</a></p>
+
   </div>
-    <p><%= link_to "お問い合せ", inquiries_path %></p>
+    <p><%= link_to "TOPに戻る", root_path %><br>
 </div>

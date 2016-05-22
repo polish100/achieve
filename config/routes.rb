@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  get 'about/company_overview'
-
-#  get 'users/index'
-
-#  get 'users/show'
-  get 'about' => 'about#company_overview'
+#get 'about' => 'about#company_overview'
 
   devise_for :users, controllers: {
     sessions: "users/sessions",
@@ -25,4 +20,3 @@ Rails.application.routes.draw do
   root to: "top#index"
   resources :blogs
 end
-

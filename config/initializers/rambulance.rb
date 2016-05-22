@@ -28,13 +28,17 @@ Rambulance.setup do |config|
     "ActiveRecord::RecordNotUnique" => :unprocessable_entity,
     "CanCan::AccessDenied"          => :forbidden,
     "Pundit::NotAuthorizedError"    => :forbidden,
-    "YourCustomException"           => :not_found
+    "YourCustomException"           => :not_found,
+    "Hosting::Task::Base::DrubyNotRunningError" => :internal_server_error,
+    "Hosting::Task::Base::AlreadyExistError"    => :internal_server_error,
+    "CustomersController::DrubyNotWorkingError" => :internal_server_error,
   }
 
   # The template name for the layout of the error pages. The default value is
   # 'error'. For exmaple, if this value is set to "error_page", Rambulance uses
   # 'app/views/layout/error_page.html.erb' as a layout for all the error pages.
-  config.layout_name = "error"
+#  config.layout_name = "error"
+    config.layout_name = "application"
 
   # The directry name to organize error page templates. The default value is
   # 'errors'. For exmaple, if this value is set to "error_pages", Rambulance
