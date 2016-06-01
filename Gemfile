@@ -55,6 +55,9 @@ group :development, :test do
   gem 'pry-doc'    # methodを表示
   gem 'pry-byebug' # デバッグを実施(Ruby 2.0以降で動作する)
   gem 'pry-stack_explorer' # スタックをたどれる
+  # gem 'pry-nav'
+  # gem 'pry-remote'
+  # gem 'pry'
   gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'

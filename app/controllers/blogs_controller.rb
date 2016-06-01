@@ -8,7 +8,6 @@ class BlogsController < ApplicationController
   # GET /blogs.json
   def index
     @blogs = Blog.all
-    raise
   end
 
   # GET /blogs/1

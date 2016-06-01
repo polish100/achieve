@@ -11,11 +11,17 @@ Rails.application.routes.draw do
   resources :users do
         member { get :image }
   end
-  get 'inquiries' => 'inquiries#index'
-  post 'inquiries' => 'inquiries#index'
-#  post 'inquiries/create' => 'inquiries#create'
-  post 'inquiries/confirm' => 'inquiries#confirm'
-  post 'inquiries/thanks' => 'inquiries#thanks'
+
+  # get 'inquiries' => 'inquiries#new'
+  # post 'inquiries' => 'inquiries#new'
+  # delete 'inquiries/:id' => 'inquiries#destroy'
+  # get 'inquiries/index' => 'inquiries#index'
+  # get 'inquiries/show' => 'inquiries#show'
+  # post 'inquiries/confirm' => 'inquiries#confirm'
+  # post 'inquiries/thanks' => 'inquiries#thanks'
+
+  resources :inquiries
+
 #  root 'top#index'
   root to: "top#index"
   resources :blogs

@@ -33,7 +33,7 @@
   <%= f.submit '送信', :class => 'btn btn-primary' %>
 <% end %>
 
-<%= form_for @inquiry, :url => {:action => 'index'} do |f| %>
+<%= form_for @inquiry, :url => {:action => 'new'} do |f| %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :email %>
         <%= f.hidden_field :message %>

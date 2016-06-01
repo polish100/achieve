@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-offset-4 col-md-4">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @inquiries.name %></h3>
+    </div>
+    <div class="panel-body">
+      <p>
+        <strong>投稿者:</strong>
+        <%= @inquiries.name %>
+      </p>
+      <p>
+        <strong>投稿日時:</strong>
+        <%= @inquiries.created_at %>
+      </p>
+      <p>
+        <strong>内容:</strong><br>
+        <%= @inquiries.message %>
+      </p>
+
+      <%= link_to 'ブログ一覧に戻る', inquiries_index_path %>
+    </div>
+</div>
+  </div>
+</div>
