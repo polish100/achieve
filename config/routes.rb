@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   # delete 'inquiries/:id' => 'inquiries#destroy'
   # get 'inquiries/index' => 'inquiries#index'
   # get 'inquiries/show' => 'inquiries#show'
-  # post 'inquiries/confirm' => 'inquiries#confirm'
-  # post 'inquiries/thanks' => 'inquiries#thanks'
+  post 'inquiries/confirm' => 'inquiries#confirm'
+  post 'inquiries/thanks' => 'inquiries#thanks'
+  post 'inquiries/new' => 'inquiries#new'
 
   resources :inquiries
 

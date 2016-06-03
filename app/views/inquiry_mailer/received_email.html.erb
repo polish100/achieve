@@ -1,8 +1,8 @@
-Webサイトからお問い合わせがありました。
+Webサイトからお問い合わせがありました。<br>
 
---------------------------
-Name: <%= @inquiry.name %>
-Email: <%= @inquiry.email %>
-Message:
-<%= @inquiry.message %>
---------------------------
+--------------------------<br>
+お名前: <%= @inquiry.name %><br>
+Eメール: <%= @inquiry.email %><br>
+お問合わせ内容:<br>
+<%= simple_format(@inquiry.message) %><br>
+--------------------------<br>

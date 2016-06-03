@@ -1,6 +1,9 @@
 class InquiriesController < ApplicationController
 
+  before_action :set_inquiry, only: [:show, :edit, :update, :destroy]
+
   def new
+
     if params[:back]
       @inquiry = Inquiry.new(inquiry_params)
       #render :index
@@ -47,7 +50,8 @@ class InquiriesController < ApplicationController
 
 
   def destroy
-    @inquiries.destroy
+
+    @inquiry.destroy
       respond_to do |format|
         format.html { redirect_to inquiries_url, notice: 'お問合わせが削除されました' }
         format.json { head :no_content }
@@ -57,8 +61,12 @@ class InquiriesController < ApplicationController
 
   private
 
+    def set_inquiry
+        @inquiry = Inquiry.find(params[:id])
+    end
+
     def inquiry_params
-      params.require(:inquiry).permit(:name, :email, :message)
+      params.require(:inquiry).permit(:subject, :name, :email, :message)
     end
 
 end

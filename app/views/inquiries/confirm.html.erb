@@ -9,6 +9,13 @@
 <%= form_for @inquiry, :url => inquiries_thanks_path do |f| %>
   <table class="table">
     <tr>
+      <th>件名</th>
+      <td>
+        <%= f.hidden_field :subject %>
+        <%= @inquiry.subject %>
+      </td>
+    </tr>
+    <tr>
       <th>名前</th>
       <td>
         <%= f.hidden_field :name %>
@@ -34,6 +41,7 @@
 <% end %>
 
 <%= form_for @inquiry, :url => {:action => 'new'} do |f| %>
+        <%= f.hidden_field :subject %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :email %>
         <%= f.hidden_field :message %>

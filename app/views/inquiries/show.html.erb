@@ -1,25 +1,24 @@
 <div class="row">
   <div class="col-md-offset-4 col-md-4">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= @inquiries.name %></h3>
-    </div>
-    <div class="panel-body">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @inquiries.subject %></h3>
+      </div>
+      <div class="panel-body">
       <p>
-        <strong>投稿者:</strong>
+        <strong>お名前　:</strong>
         <%= @inquiries.name %>
       </p>
       <p>
-        <strong>投稿日時:</strong>
+        <strong>お問合わせ日時:</strong>
         <%= @inquiries.created_at %>
       </p>
       <p>
-        <strong>内容:</strong><br>
-        <%= @inquiries.message %>
+        <strong>お問合わせ内容:</strong><br>
+        <%= simple_format(@inquiries.message) %>
       </p>
-
-      <%= link_to 'ブログ一覧に戻る', inquiries_index_path %>
+        <%= link_to 'お問合わせ一覧に戻る', inquiries_path %>
+      </div>
     </div>
-</div>
   </div>
 </div>
