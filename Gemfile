@@ -70,6 +70,7 @@ group :development, :test do
   gem 'timecop'
   gem "spring-commands-rspec"
   gem "xray-rails"
+  gem "dotenv"
 end
 
   gem 'devise'
