@@ -45,7 +45,8 @@ class BlogsController < ApplicationController
 #         format.json { render :show, status: :created, location: @blog }
 #       end
 #     else
-      @blog = Blog.new(blog_params)
+      #@blog = Blog.new(blog_params)
+      @blog = Blog.new(params[:blog])
       respond_to do |format|
         if @blog.save
           format.html { redirect_to @blog, notice: 'ブログが正しく更新されました' }
