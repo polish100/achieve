@@ -10,6 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:account_update) do |u|
+#    devise_parameter_sanitizer.permit(:account_update) do |u|
       u.permit(:email, :name, :password, :password_confirmation, :current_password,:image , :remove_image)
     end
   end

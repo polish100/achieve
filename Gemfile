@@ -70,11 +70,11 @@ group :development, :test do
   gem 'timecop'
   gem "spring-commands-rspec"
   gem "xray-rails"
-  gem "dotenv"
+  gem "dotenv-rails"
 end
 
-  gem 'devise'
-
+  #gem 'devise'
+  gem 'devise', '3.5.6'
   #gem 'therubyracer', platforms: :ruby
   gem 'therubyracer', '0.12.2'
   #gem 'therubyracer', '~>0.12.2'
