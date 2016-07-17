@@ -1,15 +1,22 @@
 Rails.application.routes.draw do
-#get 'about' => 'about#company_overview'
+
+  root to: 'top#index'
+  resources :blogs do
+    resources :comments
+    collection do
+      post :confirm
+    end
+  end
 
   devise_for :users, controllers: {
-    sessions: "users/sessions",
-    registrations: "users/registrations",
-    passwords: "users/passwords",
-    omniauth_callbacks: "users/omniauth_callbacks"
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
-#  resources :users, only: [:index, :show, :edit, :update]
+  #  resources :users, only: [:index, :show, :edit, :update]
   resources :users do
-        member { get :image }
+    member { get :image }
   end
 
   # get 'inquiries' => 'inquiries#new'
@@ -23,7 +30,5 @@ Rails.application.routes.draw do
 
   resources :inquiries
 
-#  root 'top#index'
-  root to: "top#index"
-  resources :blogs
+
 end

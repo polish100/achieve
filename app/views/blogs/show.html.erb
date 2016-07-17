@@ -1,33 +1,24 @@
-<div class="row">
-  <div class="col-md-offset-4 col-md-4">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%=@blog.title %></h3>
+<p id="notice"><%= notice %></p>
+<div class="child row">
+  <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <div class="blog-text">
+      <p class="left"><strong>タイトル</strong></p>
+      <p class="left"><%= @blog.title %></p>
+      <p class="left"><strong>内容</strong></p>
+      <p class="left"><%= @blog.content %></p>
+      <p class="right">
+        <strong>作成時間:</strong>
+        <%= @blog.created_at.strftime("%y/%m/%d %p %l:%M") %>
+      </p>
     </div>
-    <div class="panel-body">
-      <% if @blog.user.img_path_updated.present? %>
-        <%= image_tag(@blog.user.img_path_updated,:size => "48x48") %><br>
-      <% else %>
-        <%= image_tag(@blog.user.img_path,:size => "48x48") %><br>
-      <% end %>
-      <p>
-        <strong>投稿者:</strong>
-        <%= @blog.user.name %>
-      </p>
-      <p>
-        <strong>投稿日時:</strong>
-        <%= @blog.created_at %>
-      </p>
-      <p>
-        <strong>内容:</strong><br>
-        <%= @blog.content %>
-      </p>
-
-      <% if @blog.user.id == current_user.id %>
-      <%= link_to '編集', edit_blog_path(@blog) %>
-      <% end %>
-      <%= link_to 'ブログ一覧に戻る', blogs_path %>
+    <p>コメント一覧</p>
+    <div id="comments_area" >
+      <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
     </div>
-</div>
+    <%= render partial: 'comments/form', locals: { comment: @comment } %>
+    <% if current_user.id == @blog.user_id %>
+      <%= link_to '編集', edit_blog_path(@blog) %> |
+    <% end %>
+    <%= link_to '戻る', blogs_path %>
   </div>
 </div>
