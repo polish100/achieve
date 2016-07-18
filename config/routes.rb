@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-
   root to: 'top#index'
   resources :blogs do
     resources :comments
-    collection do
-      post :confirm
-    end
+    # collection do
+    #   post :confirm
+    # end
   end
 
   devise_for :users, controllers: {
@@ -29,6 +28,4 @@ Rails.application.routes.draw do
   post 'inquiries/new' => 'inquiries#new'
 
   resources :inquiries
-
-
 end

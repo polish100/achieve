@@ -13,9 +13,9 @@
     </div>
     <p>コメント一覧</p>
     <div id="comments_area" >
-      <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+    <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
     </div>
-    <%= render partial: 'comments/form', locals: { comment: @comment } %>
+    <%= render partial: 'comments/form', locals: { comment: @comment } %>	
     <% if current_user.id == @blog.user_id %>
       <%= link_to '編集', edit_blog_path(@blog) %> |
     <% end %>
