@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   root to: 'top#index'
   resources :blogs do
     resources :comments
-    # collection do
-    #   post :confirm
-    # end
+    collection do
+      post :confirm
+    end
   end
+
+  post 'comments' => 'comments#create'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
