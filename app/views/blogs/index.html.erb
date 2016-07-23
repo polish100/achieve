@@ -7,27 +7,27 @@
 <% @blogs.each do |blog| %>
 <div class="row">
   <div class="col-md-offset-4 col-md-4">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= blog.id %>：<%=blog.title %></h3>
-    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= blog.id %>：<%=blog.title %></h3>
+      </div>
       <div class="panel-body">
-      <% if blog.user.img_path_updated.present? %>
+        <% if blog.user.img_path_updated.present? %>
         <%= image_tag(blog.user.img_path_updated,:size => "48x48") %><br>
-      <% else %>
+        <% else %>
         <%= image_tag(blog.user.img_path,:size => "48x48") %><br>
-      <% end %>
-      <em>投稿者　:<%= blog.user.name %></em><br>
-      <em>投稿日時:<%= blog.created_at %></em><br>
-      <em>内容　　:<%= truncate(blog.content, :length => 5) %></em><br>
-      <tr>
-        <td><%= link_to '見る', blog %></td>
-        <% if blog.user.id == current_user.id %>
-        <td><%= link_to '編集', edit_blog_path(blog) %></td>
-        <td><%= link_to '削除', blog, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
         <% end %>
-      </tr>
-    </div>
+        <em>投稿者　:<%= blog.user.name %></em><br>
+        <em>投稿日時:<%= blog.created_at %></em><br>
+        <em>内容　　:<%= truncate(blog.content, :length => 5) %></em><br>
+        <tr>
+          <td><%= link_to '見る', blog %></td>
+          <% if blog.user.id == current_user.id %>
+          <td><%= link_to '編集', edit_blog_path(blog) %></td>
+          <td><%= link_to '削除', blog, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+          <% end %>
+        </tr>
+      </div>
     </div>
   </div>
 </div>
