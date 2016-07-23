@@ -7,6 +7,19 @@ class CommentsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to blog_path(@comment.blog), notice:'コメントは削除されました。' }
+      format.json { head :no_content }
+      format.js { render :index, notice:'コメントは削除されました。' }
+    end
+  end
+
   def create
     @comment = current_user.comments.build(comment_params)
     @blog = @comment.blog
@@ -22,6 +35,7 @@ class CommentsController < ApplicationController
       end
     end
   end
+
 
   private
 

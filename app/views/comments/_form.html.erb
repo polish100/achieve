@@ -1,9 +1,11 @@
-<%= form_for([blog, comment], remote: true) do |f| %>
+<%= form_for(comment, remote: true) do |f| %>
   <%= f.hidden_field :blog_id %>
   <div class="field">
     <%= f.text_field :content, placeholder: "内容", class: "form-control"  %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+
+    <%= f.submit '送信', class: "btn btn-info btn-block"%>
+
   </div>
 <% end %>
