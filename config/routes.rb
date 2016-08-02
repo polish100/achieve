@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+
+  get 'relationships/destroy'
+
   root to: 'top#index'
   resources :blogs do
     resources :comments
@@ -30,4 +34,6 @@ Rails.application.routes.draw do
   post 'inquiries/new' => 'inquiries#new'
 
   resources :inquiries
+
+  resources :relationships, only: [:create, :destroy]
 end
