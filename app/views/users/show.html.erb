@@ -1,23 +1,29 @@
-  <div class="row">
-    <div class="col-md-offset-4 col-md-4">
-<h2>アイコンの変更</h2>
-          </div>
-  </div>
-  <div class="row">
-        <div class="col-md-offset-4 col-md-4">
-  <div class="panel panel-success">
-    <div class="panel-heading">
-            <h3 class="panel-title"><%= @user.name.blank? ? "名無しさん" : @user.name %>のアイコン</h3>
-          </div>
+
+<div class="row">
+  <div class="col-md-offset-4 col-md-4">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @user.name.blank? ? "名無しさん" : @user.name %></h3>
+      </div>
       <div class="panel-body">
-       <% if @user.image? %>
-        <%= image_tag(@user.image.url, :size => "50x50") %>
-       <% else %>
-        <%= image_tag 'noimage.gif' %>
-       <% end %>
-        <br><br>
-   <%= link_to 'ユーザ一覧に戻る', users_path %>
+        <% if @user.img_path_updated.present? %>
+          <%= image_tag(@user.img_path_updated,:size => "48x48") %><br>
+        <% else %>
+          <%= image_tag(@user.img_path,:size => "48x48") %><br>
+        <% end %><br>
+        認証方法：<%= @user.provider.blank? ? "メール" : @user.provider %><br>
+        登録日時：<%= @user.created_at %><br>
+        フォロワー：
+          <ul>
+          <%= render partial: 'followers_form' %>
+          </ul>
+        フォローユーザ：
+          <ul>
+          <%= render partial: 'followed_users_form' %>
+          </ul>
+        <br>
+        <%= link_to 'ユーザ一覧に戻る', users_path %>
       </div>
     </div>
-    </div>
-        </div>
+  </div>
+</div>

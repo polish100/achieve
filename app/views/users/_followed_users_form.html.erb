@@ -1,0 +1,12 @@
+<% if @user.followed_users.blank? %>
+  ※フォローしていません。
+<% else %>
+  <% @user.followed_users.each do |followed_user| %>
+    <% if followed_user.img_path_updated.present? %>
+      <%= image_tag(followed_user.img_path_updated,:size => "48x48") %><br>
+    <% else %>
+      <%= image_tag(followed_user.img_path,:size => "48x48") %><br>
+    <% end %>
+    名前：<%= followed_user.name.blank? ? "名無しさん" : followed_user.name %><br><br>
+  <% end %>
+<% end %>

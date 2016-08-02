@@ -1,0 +1,12 @@
+<% if @user.followers.blank? %>
+※フォロワーはいません。
+<% else %>
+  <% @user.followers.each do |follower| %>
+    <% if follower.img_path_updated.present? %>
+      <%= image_tag(follower.img_path_updated,:size => "48x48") %><br>
+    <% else %>
+      <%= image_tag(follower.img_path,:size => "48x48") %><br>
+    <% end %>
+    名前：<%= follower.name.blank? ? "名無しさん" : follower.name %><br><br>
+  <% end %>
+<% end %>

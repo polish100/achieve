@@ -13,15 +13,18 @@
           </div>
       <div class="panel-body">
           <% if user.img_path_updated.present? %>
-          <%= image_tag(user.img_path_updated,:size => "48x48") %><br>
+            <%= image_tag(user.img_path_updated,:size => "48x48") %><br>
           <% else %>
-          <%= image_tag(user.img_path,:size => "48x48") %><br>
+            <%= image_tag(user.img_path,:size => "48x48") %><br>
           <% end %>
-          認証方法：<%= user.provider.blank? ? "メール" : user.provider %><br>
+          <%= link_to '詳細', user %><br>
+
           <% if user.id == current_user.id %>
-          <%= link_to 'プロフィール変更' , edit_user_registration_path %>
+            <%= link_to 'プロフィール変更' , edit_user_registration_path %>
           <% end %>
-          <%= render 'follow_form', user: user %>
+          <% if user.id != current_user.id %>
+            <%= render 'follow_form', user: user %>
+          <% end %>
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@
           <strong>内容:</strong><br>
           <%= @blog.content %>
         </p>
-      </div>
+
       <p>コメント一覧</p>
       <div id="comments_area" >
         <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
@@ -33,7 +33,7 @@
         <%= link_to '編集', edit_blog_path(@blog) %> |
         <% end %>
         <%= link_to '戻る', blogs_path %>
-
+      </div>
     </div>
   </div>
 </div>
