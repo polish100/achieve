@@ -36,4 +36,8 @@ Rails.application.routes.draw do
   resources :inquiries
 
   resources :relationships, only: [:create, :destroy]
+
+  resources :users, only: [:index, :show, :edit, :update] do
+    resources :tasks
+  end
 end
