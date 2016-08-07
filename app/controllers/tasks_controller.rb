@@ -5,8 +5,9 @@ class TasksController < ApplicationController
   # before_action :set_task, only: [:show, :edit, :update, :destroy, before_action :authenticate_user!]
   # GET /tasks
   # GET /tasks.json
+
   def index
-    @tasks = Task.where(user_id: params[:user_id]).where.not(done: true)
+    @tasks = Task.where(user_id: params[:user_id]).where.not(done: true, status: 1)
                  .order(updated_at: :desc)
     @user = User.find(params[:user_id])
   end
@@ -44,14 +45,12 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    @task = Task.new(task_params)
-
     respond_to do |format|
-      if @task.save
-        format.html { redirect_to user_tasks_url, notice: 'タスクを登録しました。' }
-        format.json { render :show, status: :created, location: @task }
+      if @task.update(task_params)
+        format.html { redirect_to user_tasks_url, notice: 'タスクを編集しました。' }
+        format.json { render :show, status: :ok, location: @task }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end

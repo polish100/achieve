@@ -14,9 +14,9 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to blog_path(@comment.blog), notice:'コメントは削除されました。' }
+      format.html { redirect_to blog_path(@comment.blog), notice: 'コメントは削除されました。' }
       format.json { head :no_content }
-      format.js { render :index, notice:'コメントは削除されました。' }
+      format.js { render :index, notice: 'コメントは削除されました。' }
     end
   end
 
