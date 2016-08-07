@@ -4,8 +4,7 @@ class SubmitRequestsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @submit_requests =
-      SubmitRequest.where(user_id: current_user.id).order(updated_at: :desc)
+    @submit_requests = SubmitRequest.where(user_id: current_user.id).order(updated_at: :desc)
   end
 
   def new
