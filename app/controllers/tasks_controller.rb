@@ -1,14 +1,14 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user
+  before_action :correct_user, except: [:show, :edit, :update]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   # before_action :set_task, only: [:show, :edit, :update, :destroy, before_action :authenticate_user!]
   # GET /tasks
   # GET /tasks.json
 
   def index
-    @tasks = Task.where(user_id: params[:user_id]).where.not(done: true, status: 1)
-                 .order(updated_at: :desc)
+    # @tasks = Task.where(user_id: params[:user_id]).where.not(done: true, status: 1).order(updated_at: :desc)
+    @tasks = Task.where(charge_id: current_user).where.not(done: true, status: 1).order(updated_at: :desc)
     @user = User.find(params[:user_id])
   end
 

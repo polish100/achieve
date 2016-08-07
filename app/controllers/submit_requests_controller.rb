@@ -1,6 +1,6 @@
 class SubmitRequestsController < ApplicationController
   before_action :set_submit_request, only: [:show, :edit, :update, :destroy]
-  before_action :submit_params, only: [:approve, :unapprove]
+  before_action :submit_params, only: [:approve, :unapprove, :reject]
   before_action :authenticate_user!
 
   def index
@@ -46,7 +46,8 @@ class SubmitRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @submit_request.update(submit_request_params)
-        @submit_request.task.update(charge_id: submit_request_params[:charge_id])
+        @submit_request.update(status: 1)
+        @submit_request.task.update(charge_id: submit_request_params[:charge_id],status: 1)
         format.html { redirect_to user_submit_requests_path(current_user.id, @submit_request), notice: '依頼を編集しました。'}
         format.json { render :show, status: :ok, location: @submit_request }
       else
@@ -58,8 +59,9 @@ class SubmitRequestsController < ApplicationController
 
   def approve
     @submit_request.update(status: 2)
-    @submit_request.task.update(status: 2)
-    @submit_requests = SubmitRequest.where(charge_id: current_user.id).order(updated_at: :desc)
+#    @submit_request.task.update(status: 2)
+    @submit_request.task.update(status: 2, charge_id: current_user.id)
+    @submit_requests = SubmitRequest.where(charge_id: current_user.id).where.not(status: 8).order(updated_at: :desc)
     respond_to do |format|
       format.js { render :reaction_inbox }
     end
@@ -68,7 +70,7 @@ class SubmitRequestsController < ApplicationController
   def unapprove
     @submit_request.update(status: 9)
     @submit_request.task.update(status: 9, charge_id: @submit_request.user_id)
-    @submit_requests = SubmitRequest.where(charge_id: current_user.id).order(updated_at: :desc)
+    @submit_requests = SubmitRequest.where(charge_id: current_user.id).where.not(status: 8).order(updated_at: :desc)
     respond_to do |format|
       format.js { render :reaction_inbox }
     end
@@ -77,24 +79,23 @@ class SubmitRequestsController < ApplicationController
   def reject
     @submit_request.update(status: 8)
     @submit_request.task.update(status: 8, charge_id: current_user.id)
-    @submit_requests = SubmitRequest.find_by(user_id: current_user.id).order(updated_at: :desc)
+    @submit_requests = SubmitRequest.where(user_id: current_user.id).order("updated_at DESC")
     respond_to do |format|
-      format.js { render :reaction_inbox }
+      format.js { render :reaction_index }
     end
   end
 
   def inbox
-    @submit_requests = SubmitRequest.where(charge_id: current_user.id).order(updated_at: :desc)
+    @submit_requests = SubmitRequest.where(charge_id: current_user.id).where.not(status: 8).order(updated_at: :desc)
   end
 
   def destroy
+    @submit_request.task.update(status: 0)
     @submit_request = SubmitRequest.find(params[:id])
     @submit_request.destroy
-    #binding.pry
+    @submit_requests = SubmitRequest.where(user_id: current_user.id).order("updated_at DESC")
     respond_to do |format|
-      format.html { redirect_to user_submit_requests_path(current_user.id, @submit_request), notice: '依頼は削除されました。'}
-#      format.json { head :no_content }
-#      format.js { render :reaction_index, notice: 'コメントは削除されました。' }
+      format.js { render :reaction_index }
     end
   end
 
