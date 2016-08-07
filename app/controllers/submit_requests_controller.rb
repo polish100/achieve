@@ -92,9 +92,9 @@ class SubmitRequestsController < ApplicationController
     @submit_request.destroy
     #binding.pry
     respond_to do |format|
-      format.html { redirect_to blog_path(@submit_request.blog), notice: 'コメントは削除されました。' }
-      format.json { head :no_content }
-      format.js { render :reaction_index, notice: 'コメントは削除されました。' }
+      format.html { redirect_to user_submit_requests_path(current_user.id, @submit_request), notice: '依頼は削除されました。'}
+#      format.json { head :no_content }
+#      format.js { render :reaction_index, notice: 'コメントは削除されました。' }
     end
   end
 
