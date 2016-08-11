@@ -1,5 +1,10 @@
 Rails.application.configure do
 
+  require 'pusher'
+  app_id = "234845"
+  key = "7dd89f883d4189c41720"
+  secret = "d853adc5d96610bf6a09"
+
   config.cache_classes = false
 
   config.eager_load = false

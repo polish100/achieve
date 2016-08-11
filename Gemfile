@@ -90,3 +90,4 @@ end
   gem 'rspec-rails'
   gem 'capybara'
   gem 'rambulance'
+  gem 'pusher'

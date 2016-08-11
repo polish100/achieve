@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+  after_action :sending_pusher, only: [:create]
 
   def index
     @comment = Comment.all
@@ -23,7 +25,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     @blog = @comment.blog
-
+    @notification = @comment.notifications.build(recipient_id: @blog.user_id, sender_id: current_user.id)
     respond_to do |format|
       if @comment.save
         format.html { redirect_to blog_path(@blog), notice: 'コメントを投稿しました。' }
@@ -36,10 +38,13 @@ class CommentsController < ApplicationController
     end
   end
 
-
   private
 
   def comment_params
     params.require(:comment).permit(:blog_id, :content)
+  end
+
+  def sending_pusher
+    Notification.sending_pusher(@notification.recipient_id)
   end
 end
