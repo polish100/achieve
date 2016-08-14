@@ -1,7 +1,7 @@
 <div class='notifications-index'>
   <li>
-    <% if notification.present? %>
-    <% notification.each do |notification| %>
+    <% if notifications.present? %>
+    <% notifications.each do |notification| %>
       <% unless notification.read %>
       <span class='label label-pill label-warning'>未読</span>
       <small class='dropdown'>ブログ「<%= notification.comment.blog.title %>」に<%= sender_user(notification) %> さんがコメントしました。</small>
