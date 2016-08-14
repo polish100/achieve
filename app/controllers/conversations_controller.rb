@@ -7,6 +7,10 @@ class ConversationsController < ApplicationController
   end
 
   def create
+    # sender_idが2でrecipient_idが3の時
+    # SELECT "conversations".* FROM "conversations" WHERE
+    # ((conversations.sender_id = 2 AND conversations.recipient_id =3) OR
+    # (conversations.sender_id = 3 AND  conversations.recipient_id =2))
     if Conversation.between(params[:sender_id], params[:recipient_id]).present?
       @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
     else

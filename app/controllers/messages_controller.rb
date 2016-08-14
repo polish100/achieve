@@ -4,6 +4,8 @@ class MessagesController < ApplicationController
   end
 
   def index
+    # SELECT "messages".*
+    # FROM "messages" WHERE "messages"."conversation_id" = $1  [["conversation_id", 5]]
     @messages = @conversation.messages
     if @messages.length > 10
       @over_ten = true
@@ -31,7 +33,7 @@ class MessagesController < ApplicationController
   def create
     @message = @conversation.messages.new(message_params)
     if @message.save
-      Pusher['notifications'+@message.conversation.recipient_id.to_s].trigger('message', {messaging: "メッセージが届いています。：#{@message.body}"})
+      Pusher['notifications' + @message.conversation.recipient_id.to_s].trigger('message', {messaging: "メッセージが届いています。：#{@message.body}"})
       redirect_to conversation_messages_path(@conversation)
     end
   end

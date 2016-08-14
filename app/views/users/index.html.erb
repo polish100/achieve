@@ -9,8 +9,8 @@
     <div class="col-md-offset-4 col-md-4">
   <div class="panel panel-success">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= user.id %>:<%= user.name.blank? ? "名無しさん" : user.name %></h3>
-          </div>
+      <h3 class="panel-title"><%= user.id %>:<%= link_to user.name.blank? ? "名無しさん" : user.name,user %></h3>
+    </div>
       <div class="panel-body">
           <% if user.img_path_updated.present? %>
             <%= image_tag(user.img_path_updated,:size => "48x48") %><br>
@@ -23,7 +23,10 @@
             <%= link_to 'プロフィール変更' , edit_user_registration_path %>
           <% end %>
           <% if user.id != current_user.id %>
-            <%= render 'follow_form', user: user %>
+              <div class="item">
+                <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+              </div>
+              <%= render partial: 'follow_form', locals: { user: user } if signed_in?   %>
           <% end %>
         </div>
       </div>

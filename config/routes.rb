@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'notifications/index'
-
-  get 'relationships/create'
-
-  get 'relationships/destroy'
+  # get 'notifications/index'
+  #
+  # get 'relationships/create'
+  #
+  # get 'relationships/destroy'
 
   root to: 'top#index'
   resources :blogs do
@@ -21,16 +21,12 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  #  resources :users, only: [:index, :show, :edit, :update]
+
   resources :users do
     member { get :image }
   end
 
-  # get 'inquiries' => 'inquiries#new'
-  # post 'inquiries' => 'inquiries#new'
-  # delete 'inquiries/:id' => 'inquiries#destroy'
-  # get 'inquiries/index' => 'inquiries#index'
-  # get 'inquiries/show' => 'inquiries#show'
+
   post 'inquiries/confirm' => 'inquiries#confirm'
   post 'inquiries/thanks' => 'inquiries#thanks'
   post 'inquiries/new' => 'inquiries#new'

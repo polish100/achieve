@@ -21,6 +21,7 @@
           <ul>
           <%= render partial: 'followed_users_form' %>
           </ul>
+          <%= render partial: 'user', locals: { user: @user } if signed_in?   %>
         <br>
         <%= link_to 'ユーザ一覧に戻る', users_path %>
       </div>

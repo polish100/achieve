@@ -8,6 +8,8 @@ class Conversation < ActiveRecord::Base
     where("(conversations.sender_id = ? AND conversations.recipient_id =?) OR (conversations.sender_id = ? AND  conversations.recipient_id =?)", sender_id,recipient_id, recipient_id, sender_id)
   end
 
+#messagesテーブルから、自分が送信者または受信者にいる場合、
+#usersテーブルから、相手側のレコードを探して返す。
   def target_user(current_user)
     if sender_id == current_user.id
       User.find(recipient_id)
