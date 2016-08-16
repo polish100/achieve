@@ -6,8 +6,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :current_notifications
 
+
+
   def current_notifications
-    # @notifications = Notification.where(recipient_id: current_user.id).order(created_at: :desc).includes({comment: [:blog]})
+    @notifications = Notification.where(recipient_id: current_user.id).order(created_at: :desc).includes({comment: [:blog]}) if current_user.present?
     @notifications_count = Notification.where(recipient_id: current_user).order(created_at: :desc).unread.count
   end
 
