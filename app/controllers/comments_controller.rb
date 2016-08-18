@@ -25,7 +25,8 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     @blog = @comment.blog
-    @notification = @comment.notifications.build(recipient_id: @blog.user_id, sender_id: current_user.id)
+    @notifications = @comment.notifications.build(recipient_id: @blog.user_id, sender_id: current_user.id)
+    # @notification = @comment.notifications.build(recipient_id: @blog.user_id, sender_id: current_user.id)
     respond_to do |format|
       if @comment.save
         format.html { redirect_to blog_path(@blog), notice: 'コメントを投稿しました。' }
@@ -45,6 +46,7 @@ class CommentsController < ApplicationController
   end
 
   def sending_pusher
-    Notification.sending_pusher(@notification.recipient_id)
+    Notification.sending_pusher(@notifications.recipient_id)
+    # Notification.sending_pusher(@notification.recipient_id)
   end
 end
