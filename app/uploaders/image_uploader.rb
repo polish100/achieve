@@ -23,8 +23,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     config.fog_directory = 'dic-shibuya2'
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/dic-shibuya2'
   end
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
+
 
 
 
