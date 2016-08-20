@@ -68,9 +68,14 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'tapp'
   gem 'timecop'
-  gem "spring-commands-rspec"
-  gem "xray-rails"
-  gem "dotenv-rails"
+  gem 'spring-commands-rspec'
+  gem 'xray-rails'
+  #  gem "dotenv-rails"
+  gem 'capistrano', '3.6.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
   #gem 'devise'
@@ -91,3 +96,5 @@ end
   gem 'capybara'
   gem 'rambulance'
   gem 'pusher'
+  gem "dotenv-rails"
+  gem 'unicorn'
