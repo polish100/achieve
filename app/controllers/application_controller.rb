@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
 
   def current_notifications
-    @notifications = Notification.where(recipient_id: current_user.id).order(created_at: :desc).includes({comment: [:blog]}) if current_user.present?
+    # @notifications = Notification.where(recipient_id: current_user.id).order(created_at: :desc).includes({comment: [:blog]}) if current_user.present?
     @notifications_count = Notification.where(recipient_id: current_user).order(created_at: :desc).unread.count
   end
 

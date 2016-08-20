@@ -4,7 +4,7 @@ lock '3.6.0'
 set :application, 'achieve'
 
 # cloneするgitのレポジトリ
-set :repo_url, 'git@github.com:xxxxxxx/achieve.git'
+set :repo_url, 'https://github.com/polish100/achieve.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, ENV['BRANCH'] || 'master'
@@ -20,7 +20,7 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/uploads}
 set :keep_releases, 5
 
 # rubyのバージョン
-set :rbenv_ruby, '2.3.0'
+set :rbenv_ruby, '2.1.5'
 set :rbenv_type, :system
 
 #出力するログのレベル。

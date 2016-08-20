@@ -5,4 +5,5 @@ class Comment < ActiveRecord::Base
   has_many :conversations, through: :notifications, source: :comment
 
   accepts_nested_attributes_for :notifications
+  validates :content, presence: true
 end
